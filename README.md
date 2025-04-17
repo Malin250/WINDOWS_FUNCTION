@@ -1,3 +1,15 @@
+SQL Window Function Assignment
+
+NAMES: MUGISHA Alain
+ID: 25805
+
+🎯 Objective
+This project demonstrates the use of **SQL Window Functions** on a **sales dataset**, applying key functions such as:  
+- `LAG()` , `LEAD()` → Comparing previous/next records  
+- `RANK()` , `DENSE_RANK()` , `ROW_NUMBER()` → Ordering & ranking data  
+- Aggregate functions → `MAX()` with and without `PARTITION BY`
+
+ 📊 Dataset Used
 CREATE TABLE Sales (
     Transaction_ID INT PRIMARY KEY,
     Product_Name VARCHAR(50),
@@ -18,7 +30,7 @@ INSERT INTO Sales VALUES (105, 'Widget B', 'Electronics', 'Alice Smith', 'East',
 //this is a sample dataset.
 ![dataset](https://github.com/user-attachments/assets/03a3b862-3cf9-4886-816b-0160b224be28)
 
-
+1️⃣ LAG AND LEAD FUNCTION
 SELECT 
     Transaction_ID,
     Product_Name,
@@ -40,7 +52,7 @@ FROM Sales;
 //this type of comparison help a business to track trends in product demand, aiding inventory adjustments.
 ![compare](https://github.com/user-attachments/assets/7237e496-7663-4f52-b572-c42fa13dfe25)
 
-
+2️⃣ RANK & DENSE_RANK
 SELECT 
     Category,
     Product_Name,
@@ -54,7 +66,7 @@ GROUP BY Category, Product_Name;
 //This can be used by sales teams or inventory managers to determine which products are best perfomers in each category.
 ![rank](https://github.com/user-attachments/assets/b9d107f7-7041-4c8e-ba42-2e3c8d4b00ea)
 
-
+3️⃣ Fetching Top 3 Sales per Department
 SELECT *
 FROM (
     SELECT 
@@ -71,9 +83,7 @@ WHERE Rank <= 3;
 //This can be used to identify highest generating revenue products.
 ![region rank](https://github.com/user-attachments/assets/fb5eeb55-12be-4364-90c5-8540a37c0700)
 
-
-
-
+4️⃣ ROW_NUMBER() Function
 SELECT * FROM (
     SELECT 
         Category,
@@ -89,8 +99,7 @@ WHERE Row_Num <= 2;
 //This analysis can help HR to identify early trends or the first movers in a market segement, valuable for understanding customer behaviour in a new product.
 ![Row nmb](https://github.com/user-attachments/assets/183d917b-f36d-4893-9080-48bfdc6069f2)
 
-
-
+5️⃣ AGGREGATION
 SELECT 
     Category,
     Product_Name,
